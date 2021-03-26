@@ -24,5 +24,3 @@ const VideoViewer = ({isActive}: VideoViewerProps) => {
 };
 
 export default VideoViewer;
-
-//wss://ms-web.arcademy.live:8989

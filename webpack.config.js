@@ -119,6 +119,13 @@ const loaders = (isDev) => {
   return {
     rules: [
       {
+        test: require.resolve('janus-gateway'),
+        loader: 'exports-loader',
+         options: {
+           exports: 'Janus',
+         },
+      },
+      {
         test: /\.scss$/,
         use: [...scssLoaders(isDev)],
       },
@@ -210,8 +217,12 @@ module.exports = (env) => {
       path: path.resolve(process.cwd(), 'build'),
     },
     plugins:[
-      new webpack.HotModuleReplacementPlugin()
-    ]},
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.ProvidePlugin({ adapter: ['webrtc-adapter', 'default'] })
+    ],
+    watchOptions: {
+      poll: true
+    }},
     client(isDev, mode),
     server(isDev, mode)
   ];

@@ -10,7 +10,7 @@ const Main = () => {
 
   return (
     <div className={s.mainContainer}>
-      <Header setIsActive={setIsActive} setStream={setStream} streams={streams}/>
+      <Header setIsActive={setIsActive} setStream={setStream} streams={streams} stream={stream}/>
       <VideoViewer isActive={isActive} />
     </div>
   );
