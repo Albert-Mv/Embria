@@ -9,10 +9,9 @@ const port = 3000;
 const app = express();
 const __dirname = path.resolve();
 
-app.use(express.static(path.resolve(__dirname, 'build')));
+app.use(express.json());
 
-// app.use(express.json({ extended: true }))
-
+app.use(express.static(path.resolve(__dirname, "build")));
 
 app.get("/", (req, res) => {
   const app = ReactDOMServer.renderToString(<App />);
@@ -20,7 +19,7 @@ app.get("/", (req, res) => {
   fs.readFile(indexFile, "utf8", (err, data) => {
     res.set("Content-Type", "text/html");
     if (err) {
-      console.log(err)
+      console.log(err);
       return res
         .status(500)
         .send(

@@ -3,9 +3,9 @@ module.exports = (api) => {
 
   return {
     presets: [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
-        useBuiltIns: "usage",
+        useBuiltIns: 'usage',
         corejs: {
           version: 3.9,
           proposals: true,
@@ -14,15 +14,15 @@ module.exports = (api) => {
           esmodules: true,
         },
       },
-      "@babel/preset-react",
-      "@babel/preset-typescript",
+      '@babel/preset-react',
+      '@babel/preset-typescript',
     ],
     plugins: [
       [
-        "@babel/plugin-transform-runtime",
+        '@babel/plugin-transform-runtime',
       ],
-      "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-transform-react-constant-elements",
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-transform-react-constant-elements',
     ],
   };
 };

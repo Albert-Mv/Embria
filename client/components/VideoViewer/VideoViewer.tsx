@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./VideoViewer.scss";
 
 type VideoViewerProps = {
-    isActive: boolean
+  isPlaying: boolean;
 };
 
-const VideoViewer = ({isActive}: VideoViewerProps) => {
+const VideoViewer = React.forwardRef(({ isPlaying }: VideoViewerProps, ref: React.LegacyRef<HTMLVideoElement>) => {
 
   return (
     <div className={s.videoViewer}>
-      {isActive && (
-        <iframe
-          className={s.videoFrame}
-          src="https://www.youtube.com/embed/LHMwHkmhCMc"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        ></iframe>
+      {isPlaying && (
+        <video ref={ref} controls autoPlay className={s.videoFrame}></video>
       )}
       
     </div>
   );
-};
+});
 
 export default VideoViewer;
-
-//wss://ms-web.arcademy.live:8989
