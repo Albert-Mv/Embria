@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import VideoViewer from "../../components/VideoViewer/VideoViewer";
 import Janus from "janus-gateway-js";
 import s from "./Main.scss";
 
 const Main = () => {
-  const videoRef: React.Ref<HTMLVideoElement> = React.createRef();
+  const videoRef: React.RefObject<HTMLVideoElement> = React.useRef() as React.MutableRefObject<HTMLVideoElement>;;
   const streams: number[] = [100, 101];
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
@@ -44,7 +44,7 @@ const Main = () => {
         return streamingPlugin;
       })
       .catch(console.log);
-  }, []);
+  }, [videoRef.current])
 
   const connectToMountpoint = (streamId: number): Promise<any> => {
     const mountOptions = {

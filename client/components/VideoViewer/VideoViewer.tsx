@@ -1,12 +1,11 @@
 import React from "react";
 import s from "./VideoViewer.scss";
 
-type VideoViewerProps = {
+type VideoViewerProps = React.VideoHTMLAttributes<HTMLVideoElement> & {
   isPlaying: boolean;
 };
 
-const VideoViewer = React.forwardRef(({ isPlaying }: VideoViewerProps, ref: React.LegacyRef<HTMLVideoElement>) => {
-
+const VideoViewer = React.forwardRef<HTMLVideoElement, VideoViewerProps>(({ isPlaying }, ref) => {
   return (
     <div className={s.videoViewer}>
       {isPlaying && (
