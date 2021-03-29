@@ -1,1 +1,1 @@
-declare module 'janus-gateway';
+declare module 'janus-gateway-js';

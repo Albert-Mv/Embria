@@ -5,7 +5,9 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack --env NODE_ENV=development --watch --config webpack.config.js",
-    "build": "webpack --env NODE_ENV=production --config webpack.config.js"
+    "build": "webpack --env NODE_ENV=production --config webpack.config.js",
+    "lint": "eslint . --ext .js,.jsx --ignore-pattern node_modules/",
+    "fixlint": "eslint . --ext .js,.jsx --ignore-pattern node_modules/ --ignore-pattern 'build/' --fix"
   },
   "keywords": [
     "webRTC",
@@ -28,6 +30,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "superagent": "^6.1.0",
+    "terser-webpack-plugin": "^5.1.1",
     "uuid": "^8.3.2",
     "websocket": "^1.0.33"
   },

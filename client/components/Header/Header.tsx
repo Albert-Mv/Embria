@@ -1,15 +1,17 @@
-import React, { SetStateAction } from "react";
-import useRequest from "../../hooks/useRequest";
+import React, { SetStateAction, useState } from "react";
 import s from "./Header.scss";
 
 type HeaderProps = {
   isPlaying: boolean,
   setIsPlaying: React.Dispatch<SetStateAction<boolean>>;
-  setStreamId: React.Dispatch<React.SetStateAction<number>>;
   streams: number[];
+  playStream: (streamId: number)=>void ;
+  stopStream: ()=>void;
 };
 
-const Header = ({ isPlaying, setIsPlaying, setStreamId, streams }: HeaderProps) => {
+const Header = ({ isPlaying, setIsPlaying, streams, playStream, stopStream }: HeaderProps) => {
+  const [streamId, setStreamId] = useState<number>(streams[0]);
+
   return (
     <div className={s.header}>
       <img
@@ -30,6 +32,11 @@ const Header = ({ isPlaying, setIsPlaying, setStreamId, streams }: HeaderProps) 
         </select>
         <button className={s.btn} onClick={()=>{
           setIsPlaying(prev=>!prev)
+          if (!isPlaying) {
+            playStream(streamId);
+          } else {
+            stopStream();
+          }
         }}>
           {isPlaying ? "Stop" : "Play"}
         </button>
