@@ -5,7 +5,7 @@ import Janus from "janus-gateway-js";
 import s from "./Main.scss";
 
 const Main = () => {
-  const videoRef: React.RefObject<HTMLVideoElement> = React.useRef() as React.MutableRefObject<HTMLVideoElement>;;
+  const videoRef: React.RefObject<HTMLVideoElement> = React.useRef(null);
   const streams: number[] = [100, 101];
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
