@@ -176,7 +176,7 @@ const client = (isDev, mode) => {
     optimization: {
       minimize: !isDev,
       minimizer: [new TerserPlugin()],
-    },
+    }
   };
 };
 
@@ -201,7 +201,7 @@ const server = (isDev, mode) => {
     optimization: {
       minimize: !isDev,
       minimizer: [new TerserPlugin()],
-    },
+    }
   };
 };
 
@@ -218,11 +218,7 @@ module.exports = (env) => {
     },
     plugins:[
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.ProvidePlugin({ adapter: ['webrtc-adapter', 'default'] })
-    ],
-    watchOptions: {
-      poll: true
-    }},
+    ]},
     client(isDev, mode),
     server(isDev, mode)
   ];
