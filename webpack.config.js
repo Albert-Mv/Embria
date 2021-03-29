@@ -117,13 +117,6 @@ const scssLoaders = (isDev) => {
 const loaders = (isDev) => ({
   rules: [
     {
-      test: require.resolve('janus-gateway'),
-      loader: 'exports-loader',
-      options: {
-        exports: 'Janus',
-      },
-    },
-    {
       test: /\.scss$/,
       use: [...scssLoaders(isDev)],
     },
